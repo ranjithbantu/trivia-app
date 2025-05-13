@@ -25,4 +25,4 @@ RUN npm ci --omit=dev
 EXPOSE 4000
 
 # ⚠️  Node ESM resolver needs the flag below so it adds “.js” automatically
-CMD ["node", "--experimental-specifier-resolution=node", "dist/server.js"]
+CMD ["node", "--experimental-specifier-resolution=node", "dist/server.js"] 
