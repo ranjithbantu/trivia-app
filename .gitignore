@@ -1,0 +1,89 @@
+##############################################################################
+#  1 ▪ GLOBAL EXCLUSIONS — apply to every directory (frontend, backend, …)  #
+##############################################################################
+
+# — Node / NPM ----------------------------------------------------------------
+**/node_modules/                # all packages are re-created by `npm ci`
+npm-debug.log*                  # failed install logs
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# — Build artefacts -----------------------------------------------------------
+# transpiled, bundled or static output produced by a build-step
+**/dist/
+**/build/
+**/.vite/                        # Vite’s cache (frontend)
+**/.turbo/                       # Turbo / Nx etc.
+**/.next/                        # Next.js (if added later)
+coverage/                       # Jest / Vitest coverage reports
+*.tsbuildinfo                   # tsc incremental compilation cache
+
+# — Environment & secrets -----------------------------------------------------
+.env                             # never commit secrets
+.env.*                           # .env.local / .env.production …
+!.env.example                    # keep the template
+
+# — Logs & misc. runtime files -----------------------------------------------
+logs/
+*.log
+*.pid
+*.pid.lock
+*.sqlite                         # e.g. local dev DBs
+*.swp                            # Vim swap files
+
+# — OS / Editor cruft ----------------------------------------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.suo
+*.bak
+*.tmp
+
+# — Docker --------------------------------------------------------------------
+# keep Dockerfile & docker-compose.yml, ignore stray artefacts
+docker-data/
+**/.docker/                      # if any intermediate build dirs
+mongodb/                         # mounted host-side DB dir (if ever created)
+
+##############################################################################
+#  2 ▪ PROJECT-SPECIFIC EXCLUSIONS                                           #
+##############################################################################
+
+# Backend TypeScript compile output
+/backend/dist/
+
+# Frontend static bundle
+/frontend/dist/
+/frontend/.vite-cache/           # Vite < v5 cache name
+
+# Jest / Vitest snapshots (if you don’t want snapshots in VCS, keep them here)
+#**/__snapshots__/
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+
+# Builds / dist
+dist/
+build/
+coverage/
+
+# Environment files
+.env
+.env.*
+
+# Editors & macOS
+.DS_Store
+.idea/
+.vscode/
+
+# Docker leftovers
+**/tmp/
+**/.docker/
+
+# Keep the sample env
+!.env.example
+!backend/.env.example

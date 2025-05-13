@@ -1,0 +1,50 @@
+/* ──────────────────────────────────────────────────────────
+   Tailwind layers
+   ────────────────────────────────────────────────────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ──────────────────────────────────────────────────────────
+   Global look & feel
+   (✱ no gradient-stop utilities inside @apply ✱)
+   ────────────────────────────────────────────────────────── */
+
+/* Default text colour + full-height page */
+body {
+  @apply min-h-screen text-zinc-900 antialiased;
+}
+
+/* Form controls ----------------------------------------------------------- */
+input,
+select {
+  @apply w-full rounded border border-zinc-300 px-3 py-2;
+}
+
+/* Range-slider accent colour (modern browsers honour accent-color) -------- */
+input[type='range'] {
+  @apply accent-blue-600;
+}
+
+/* ------------------------------------------------------------------------ */
+/*  Re-usable component helpers                                             */
+/* ------------------------------------------------------------------------ */
+
+/* Primary button */
+.btn-primary {
+  @apply w-full rounded-lg bg-slate-900 py-3 font-semibold text-white
+         shadow transition-colors hover:bg-slate-800
+         disabled:cursor-not-allowed disabled:opacity-40
+         focus:outline-none focus:ring-2 focus:ring-slate-500
+         focus:ring-offset-2;
+}
+
+/* Card wrapper (StartPage & ResultsPage) */
+.card {
+  @apply w-full max-w-md rounded-xl bg-white/80 p-8 shadow-xl backdrop-blur;
+}
+
+/* Vertical stack gap helper */
+.space-y-6 > * + * {
+  @apply mt-6;
+}
