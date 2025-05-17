@@ -7,6 +7,7 @@ services:
       - mongo-data:/data/db
 
   backend:
+    container_name: trivia-app-backend
     build: ./backend
     environment:
       - MONGO_URI=mongodb://mongo:27017/trivia
@@ -16,6 +17,7 @@ services:
       - "4000:4000"
 
   frontend:
+    container_name: trivia-app-frontend
     build:
       context: ./frontend
       args:
