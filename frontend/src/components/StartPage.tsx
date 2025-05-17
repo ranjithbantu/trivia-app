@@ -27,7 +27,7 @@ export default function StartPage() {
   }, [dispatch, status]);
 
   /* derived data ───────────────────────────────────────────── */
-  const available  = items.filter(c => c.count > 0);      // 👍 hide empty sets
+  const available  = items.filter(c => c.count > 0);      
   const cat        = available.find(c => c._id === catId);
   const max        = cat?.count ?? 20;                    // default max per API
   const ready      = status === 'ready';
