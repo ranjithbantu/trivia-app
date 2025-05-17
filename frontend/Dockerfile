@@ -4,6 +4,11 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+
+# allow overriding API URL at build-time (default: backend on localhost)
+ARG VITE_API_URL="http://localhost:4000"
+ENV VITE_API_URL=${VITE_API_URL}
+
 RUN npm run build            # generates static files in /app/dist
 
 # ---------- runtime ----------
